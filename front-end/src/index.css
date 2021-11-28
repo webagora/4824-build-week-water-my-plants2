@@ -194,6 +194,12 @@ table.table .avatar {
 	padding: 5px;
   }
 
+  .user-wrapper img {
+	  width: 300px;
+	  height: 300px;
+	  object-fit: cover;
+  }
+
   /* Header */
 
 .nav-bar {
