@@ -3,7 +3,13 @@
 const Users = (props) => {
 
     return (
-        <h2>Users Page</h2>    
+        <div className = "user-wrapper">
+            {props.users.map(user=> (
+                <div> 
+                    {user.name}
+                </div>
+            )) }
+        </div>   
     )
 }
 

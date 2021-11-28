@@ -4,6 +4,7 @@ import axios from 'axios'
 import { Route, Link } from 'react-router-dom'
 
 import Users from './components/Users'
+import HomePage from './components/HomePage'
 
 const admin = {
   location: "NY",
@@ -14,7 +15,7 @@ const admin = {
 }
 
 function App() {
-  const [users, setUsers] = useState([]);
+  const [users, setUsers] = useState([admin]);
 
   useEffect(() => {
     axios.get('https://randomuser.me/api/?results=5')
@@ -30,15 +31,17 @@ function App() {
   return (
     <div className="App">
      <header>
-        <nav>
-          <Link to="/">Home</Link>
-          <Link to="/users">Friends Page</Link>
+        <nav className="nav-bar">
+          <div className="left-links"> <Link to="/">Home</Link></div>
+          <div className="right-links"> <Link to="/users">Friends Page</Link></div>
         </nav>
       </header>
       <Route path="/users">
         <Users users={users} />
       </Route>
-      
+      <Route exact path="/">
+        <HomePage />
+      </Route>  
     </div>
   );
 }
