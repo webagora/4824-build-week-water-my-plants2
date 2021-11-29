@@ -4,6 +4,7 @@ import axios from 'axios'
 import { Route, Link } from 'react-router-dom'
 
 import Users from './components/Users'
+import User from './components/User'
 import HomePage from './components/HomePage'
 
 const admin = {
@@ -46,7 +47,10 @@ function App() {
           <div className="right-links"> <Link to="/users">Friends Page</Link></div>
         </nav>
       </header>
-      <Route path="/users">
+      <Route path="/users/:id">
+        <User users= {users} />
+      </Route>
+      <Route exact path="/users">
         <Users users={users} />
       </Route>
       <Route exact path="/">
