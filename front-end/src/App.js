@@ -7,10 +7,18 @@ import Users from './components/Users'
 import HomePage from './components/HomePage'
 
 const admin = {
-  location: "NY",
-  uuid: "12345",
-  picture: "https://wallsdesk.com/wp-content/uploads/2016/12/Thor-High-Quality-Wallpapers.jpg",
-  name: "CRHarding",
+  location: {
+    state: "NY"
+  },
+  login: {
+    uuid: "12345"
+  },
+  picture: {
+    medium: "https://wallsdesk.com/wp-content/uploads/2016/12/Thor-High-Quality-Wallpapers.jpg"
+  },
+  name: {
+    first: "CRHarding"
+  },
   email: "C@c.com"
 }
 
@@ -21,6 +29,8 @@ function App() {
     axios.get('https://randomuser.me/api/?results=5')
       .then (res => {
         console.log('res: ', res.data.results);
+        // setUsers(...users, res.data.res) // [user, [user1, user2, user3 ...]]
+        setUsers([...users, ...res.data.results]) 
       })
       .catch(err => {
         console.log(err);
