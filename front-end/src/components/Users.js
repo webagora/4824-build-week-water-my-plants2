@@ -1,4 +1,4 @@
-
+import { Link } from 'react-router-dom'
 
 const Users = (props) => {
 
@@ -9,7 +9,9 @@ const Users = (props) => {
             {props.users.map(user=>( 
                 <div key = {user.login.uuid}> 
                     <h2>{user.name.first}</h2>
+                    <Link to = {`/users/${user.login.uuid}`}>
                     <img src = {user.picture.large} alt = {user.name} />
+                    </Link>
                     <p>Contact: {user.email} </p>
                     <p>Location: {user.location.state} </p>
 
