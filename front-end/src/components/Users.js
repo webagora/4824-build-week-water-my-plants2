@@ -7,7 +7,7 @@ const Users = (props) => {
     return (
         <div className = "user-wrapper">
             {props.users.map(user=>( 
-                <div key = {user.uuid}> 
+                <div key = {user.login.uuid}> 
                     <h2>{user.name.first}</h2>
                     <img src = {user.picture.large} alt = {user.name} />
                     <p>Contact: {user.email} </p>
