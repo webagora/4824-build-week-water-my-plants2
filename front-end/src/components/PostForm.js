@@ -19,7 +19,12 @@ const PostForm = (props) => {
                 />
                 <input type="submit" value="Submit your post!" />
             </form>
-            
+            {props.posts.map((post, idx) => (
+                <div key={idx}>
+                    <p>{post.title}</p>
+                    <p>{post.content}</p>
+                </div>
+            ))}
         </div>
     
     )

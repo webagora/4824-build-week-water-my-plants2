@@ -31,7 +31,7 @@ const post = {
 
 function App() {
   const [users, setUsers] = useState([admin]);
-  const [formValues, setFormValues] = useState();
+  const [formValues, setFormValues] = useState(post);
   const [posts, setPosts] = useState ([post]);
 
   useEffect(() => {
