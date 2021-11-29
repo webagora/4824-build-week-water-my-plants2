@@ -6,6 +6,7 @@ import { Route, Link } from 'react-router-dom'
 import Users from './components/Users'
 import User from './components/User'
 import HomePage from './components/HomePage'
+import PostForm from './components/PostForm'
 
 const admin = {
   location: {
@@ -23,8 +24,15 @@ const admin = {
   email: "C@c.com"
 }
 
+const post = {
+  title: '',
+  content: ''
+}
+
 function App() {
   const [users, setUsers] = useState([admin]);
+  const [formValues, setFormValues] = useState();
+  const [posts, setPosts] = useState ([post]);
 
   useEffect(() => {
     axios.get('https://randomuser.me/api/?results=5')
@@ -39,14 +47,29 @@ function App() {
 
   }, [])
 
+  const change = (evt) => {
+    // Long hand version
+    // const { name, value } = evt.target;
+    setFormValues({ ...formValues, [evt.target.name]: evt.target.value })
+  }
+
+  const submit = (e) => {
+    e.preventDefault();
+    setPosts([...posts, formValues]);
+  }
+
   return (
     <div className="App">
      <header>
         <nav className="nav-bar">
           <div className="left-links"> <Link to="/">Home</Link></div>
           <div className="right-links"> <Link to="/users">Friends Page</Link></div>
+          <div className="right-links"> <Link to="/post">Post something!</Link></div>
         </nav>
       </header>
+      <Route path = "/post" >
+        <PostForm change = {change} submit = { submit} post={formValues} posts={posts} />
+      </Route>
       <Route path="/users/:id">
         <User users= {users} />
       </Route>
